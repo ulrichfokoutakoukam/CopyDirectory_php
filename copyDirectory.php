@@ -60,7 +60,7 @@ function full_copy( $source, $target, $excludedPath ) {
                             $bRes = full_copy( $Entry, $target . '/' . $entry, $excludedPath );
                             continue;
                         }
-                    echo '<br><span>copy file or directory' . $Entry . '</span>';
+                    echo '<br><span class="text-success">copy file or directory' . $Entry . '</span>';
                         $bRes = copy( $Entry, $target . '/' . $entry );
                 }
                 
