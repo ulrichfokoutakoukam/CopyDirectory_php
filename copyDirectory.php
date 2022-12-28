@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- Webpage Title -->
+     <title>copy directory</title>
+
+     <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+
 <?php
 
 if(isset($_POST['sourcePath'])&&isset($_POST["destinationPath"])){
@@ -5,9 +14,11 @@ if(isset($_POST['sourcePath'])&&isset($_POST["destinationPath"])){
     $destinationPath = $_POST["destinationPath"];
     $excludedPath = $_POST["excludedPath"];
 
+    echo 'excludedPath : ' . $excludedPath . '<br>';
+
     $result = full_copy($sourcePath, $destinationPath, $excludedPath);
 
-    echo 'excludedPath : ' . $excludedPath;
+    
 
     if(($result != null)&&($result != false)){
         echo "<H3>Copy directories completed!</H3> <br>" . $result; //output when done
@@ -49,6 +60,7 @@ function full_copy( $source, $target, $excludedPath ) {
                             $bRes = full_copy( $Entry, $target . '/' . $entry, $excludedPath );
                             continue;
                         }
+                    echo '<br><span>copy file or directory' . $Entry . '</span>';
                         $bRes = copy( $Entry, $target . '/' . $entry );
                 }
                 
